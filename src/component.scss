@@ -1,0 +1,27 @@
+$dresses: ("body": 1, "hair": 3, "eyes": 2, "mouth": 2, "beard": 4, "tops": 3, "bottoms": 2, "shoes": 2, "accessories": 5);
+
+tl-character {
+    display: inline-block;
+
+    position: relative;
+
+    width: 100px;
+    height: 200px;
+
+    div.tl-character-item {
+        position: absolute;
+
+        inset: 0 0 0 0;
+
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+
+        @each $key, $val in $dresses {
+            &.#{$key} {
+                background-image: var(--#{$key}-url);
+                z-index: $val;
+            }
+        }
+    }
+}
